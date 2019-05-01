@@ -6,9 +6,9 @@ import sunpy.io
 import os.path
 
 # Specify data directories and data range
-mdidat = '/Users/clowder/data/mdi.Synoptic_Mr.polfil/'
+mdidat = os.path.expanduser('~/data/mdi.Synoptic_Mr.polfil/')
 mdicrs = np.arange(1911, 2096)
-hmidat = '/Users/clowder/data/hmi.Synoptic_Mr.polfil/'
+hmidat = os.path.expanduser('~/data/hmi.Synoptic_Mr.polfil/')
 hmicrs = np.arange(2097, 2215)
 
 # Specify any parameters needed for the output map

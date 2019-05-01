@@ -3,12 +3,13 @@
 
 # Import libraries
 import sunpy
+import sunpy.io
 import datetime
 from sunpy.net import Fido, attrs as a
 import drms
 
 # Specify any directories
-hmidat = '/Users/clowder/data/hmi.Synoptic_Mr.polfil/'
+hmidat = os.path.expanduser('~/data/hmi.Synoptic_Mr.polfil/')
 
 # Start the client
 c = drms.Client()

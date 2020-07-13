@@ -1,6 +1,8 @@
 # plt-bfly
 Generate a solar magnetic field butterfly diagram
 
+![alt text](https://github.com/lowderchris/plt-bfly/blob/master/bfly.png?raw=true)
+
 ## Grabbing data
 HMI data can be acquired using JSOC, or other similar tools.
 

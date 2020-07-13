@@ -7,6 +7,7 @@ import sunpy.io
 import datetime
 from sunpy.net import Fido, attrs as a
 import drms
+import os
 
 # Specify any directories
 hmidat = os.path.expanduser('~/data/hmi.Synoptic_Mr.polfil/')
@@ -17,7 +18,7 @@ c = drms.Client()
 # Generate a search
 # CL - sanitize the use of my email address and directories here...
 today = datetime.datetime.now().replace(microsecond=0,second=0,minute=0,hour=0)
-res = Fido.search(a.Time('2009-01-01', today), a.jsoc.Series('hmi.Synoptic_Mr_polfil_720s'), a.jsoc.Notify(''))
+res = Fido.search(a.Time('2019-06-01', today), a.jsoc.Series('hmi.Synoptic_Mr_polfil_720s'))
 
 
 # Once the query is made and trimmed down...

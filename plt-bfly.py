@@ -10,9 +10,11 @@ import sunpy.io
 import os.path
 import datetime
 
+light_figs()
+
 # Specify data directories and data range
 cr0 = 1911
-cr1 = 2231
+cr1 = 2255
 mdidat = os.path.expanduser('~/data/mdi.Synoptic_Mr.polfil/')
 mdicrs = np.arange(cr0, 2096)
 hmidat = os.path.expanduser('~/data/hmi.Synoptic_Mr.polfil/')
@@ -75,7 +77,28 @@ ax1.set_xlabel('Year')
 ax1.set_ylabel('Sine latitude')
 ax1a.set_ylabel('Latitude (degrees)')
 ax1b.set_xlabel('Carrington rotation')
-cb = plt.colorbar(im, ax=ax1a, label='Mean magnetic field (G)', use_gridspec=True, fraction=0.05, pad=0.1, extend='both')
+cb = plt.colorbar(im, ax=ax1a, label='Mean magnetic flux density (G)', use_gridspec=True, fraction=0.05, pad=0.1, extend='both')
 #f.tight_layout()
 plt.savefig('bfly.pdf', dpi=300)
 plt.savefig('bfly.png', dpi=300)
+
+keynote_figs()
+
+f, (ax1) = plt.subplots(1, figsize=[8,4])
+im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], aspect='auto', cmap='Greys_r')
+ax1.set_yticks([-1,-0.5,0,0.5,1])
+ax1a = ax1.twinx()
+ax1b = ax1.twiny()
+latticks = np.array([-90,-60,-30,30,60,90])
+ax1a.set_yticks(np.sin(latticks*np.pi/180))
+ax1a.set_yticklabels(latticks)
+ax1b.set_xlim(cr0, cr1)
+ax1.xaxis_date()
+ax1.set_xlabel('Year')
+ax1.set_ylabel('Sine latitude')
+ax1a.set_ylabel('Latitude (degrees)')
+ax1b.set_xlabel('Carrington rotation')
+cb = plt.colorbar(im, ax=ax1a, label='Mean magnetic flux density (G)', use_gridspec=True, fraction=0.05, pad=0.1, extend='both')
+#f.tight_layout()
+plt.savefig('d_bfly.pdf', dpi=300)
+plt.savefig('d_bfly.png', dpi=300)

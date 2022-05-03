@@ -9,6 +9,3 @@ HMI data can be acquired using JSOC, or other similar tools. The included script
 To access the set of polar corrected MDI synoptic charts:
 
     curl -O http://soi.stanford.edu/magnetic/synoptic/carrot/M_Corr/synop_Mr_0.polfil.[1911-2104].fits
-
-## To-do
-- Toggle for latitude / sine latitude projection

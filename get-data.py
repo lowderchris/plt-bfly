@@ -20,7 +20,10 @@ crfiles.sort()
 crlist = [int(i[-19:-15]) for i in crfiles]
 
 # Specify requested rotations
-cr0 = max(crlist) + 1
+if len(crlist) == 0:
+    cr0 = 2096
+else:
+    cr0 = max(crlist) + 1
 cr1 = int(sunpy.coordinates.sun.carrington_rotation_number(t='now'))
 
 if (cr0 - 1) == cr1:

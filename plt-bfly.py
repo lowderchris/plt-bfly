@@ -14,7 +14,7 @@ light_figs()
 
 # Specify data directories and data range
 cr0 = 1911
-cr1 = 2255
+cr1 = 2266
 mdidat = os.path.expanduser('~/data/mdi.Synoptic_Mr.polfil/')
 mdicrs = np.arange(cr0, 2096)
 hmidat = os.path.expanduser('~/data/hmi.Synoptic_Mr.polfil/')
@@ -63,7 +63,7 @@ tarr_cr = [ datetime.datetime.strptime((tarr[x])[0:16], "%Y.%m.%d_%H:%M") for x 
 tmin, tmax = mdates.date2num([tarr_cr[0], tarr_cr[-1]])
 
 # Plot the resulting diagram
-f, (ax1) = plt.subplots(1, figsize=[6,3.75])
+f, (ax1) = plt.subplots(1, figsize=[12,6])
 im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], aspect='auto', cmap='Greys_r')
 ax1.set_yticks([-1,-0.5,0,0.5,1])
 ax1a = ax1.twinx()
@@ -107,7 +107,7 @@ plt.savefig('bfly_v.png', dpi=300)
 
 keynote_figs()
 
-f, (ax1) = plt.subplots(1, figsize=[8,4])
+f, (ax1) = plt.subplots(1, figsize=[12,6])
 im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], aspect='auto', cmap='Greys_r')
 ax1.set_yticks([-1,-0.5,0,0.5,1])
 ax1a = ax1.twinx()

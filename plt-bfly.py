@@ -2,7 +2,6 @@
 
 # Import libraries
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import sunpy
@@ -10,7 +9,7 @@ import sunpy.io
 import os.path
 import datetime
 
-light_figs()
+# light_figs()
 
 # Specify data directories and data range
 cr0 = 1911
@@ -105,7 +104,7 @@ f.tight_layout()
 plt.savefig('bfly_v.pdf', dpi=300)
 plt.savefig('bfly_v.png', dpi=300)
 
-keynote_figs()
+# keynote_figs()
 
 f, (ax1) = plt.subplots(1, figsize=[12,6])
 im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], aspect='auto', cmap='Greys_r')

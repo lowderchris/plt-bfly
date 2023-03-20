@@ -5,7 +5,6 @@
 import sunpy
 import sunpy.io
 import sunpy.coordinates
-import datetime
 from sunpy.net import Fido, attrs as a
 import drms
 import os
@@ -13,6 +12,9 @@ import glob
 
 # Specify any directories
 hmidat = os.path.expanduser('~/data/hmi.Synoptic_Mr.polfil/')
+mdidat = os.path.expanduser('~/data/mdi.Synoptic_Mr.polfil/')
+
+# HMI data
 
 # Sort out the last downloaded rotation
 crfiles = glob.glob(hmidat+'*.fits')
@@ -38,3 +40,10 @@ res = Fido.search(a.jsoc.Series('hmi.Synoptic_Mr_polfil_720s'), crots, a.jsoc.No
 
 # Once the query is made and trimmed down...
 download = Fido.fetch(res, path=hmidat+'{file}.fits')
+
+# MDI data
+
+# Grab MDI
+os.system('mkdir ' + mdidat)
+os.chdir(mdidat)
+os.system('curl -O "http://soi.stanford.edu/magnetic/synoptic/carrot/M_Corr/synop_Mr_0.polfil.[1911-2104].fits"')

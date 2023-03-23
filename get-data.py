@@ -36,7 +36,8 @@ c = drms.Client()
 
 # Generate a search
 crots = a.jsoc.PrimeKey('CAR_ROT', str(cr0) + '-' + str(cr1))
-res = Fido.search(a.jsoc.Series('hmi.Synoptic_Mr_polfil_720s'), crots, a.jsoc.Notify(os.environ["JSOC_EMAIL"]))
+res = Fido.search(a.jsoc.Series('hmi.Synoptic_Mr_polfil_720s'), crots, 
+                  a.jsoc.Notify(os.environ["JSOC_EMAIL"]))
 
 # Once the query is made and trimmed down...
 download = Fido.fetch(res, path=hmidat+'{file}.fits')

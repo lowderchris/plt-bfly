@@ -39,7 +39,8 @@ for cr in mdicrs:
         tarr.append(d[0].header['T_ROT'])
         crdat = d[0].data
         crdat[np.where(abs(crdat) > 3000)] = 0
-        bfly[:,i] = np.interp(lat,np.linspace(-1,1,crdat.shape[0]),crdat.sum(axis=1)/sum(np.isfinite(crdat[540,:])))
+        bfly[:,i] = np.interp(lat,np.linspace(-1,1,crdat.shape[0]), 
+                              crdat.sum(axis=1)/sum(np.isfinite(crdat[540,:])))
     else:
         bfly[:,i] = np.NaN
     i += 1
@@ -58,12 +59,14 @@ for cr in hmicrs:
     i += 1
 
 # Convert the timing array
-tarr_cr = [ datetime.datetime.strptime((tarr[x])[0:16], "%Y.%m.%d_%H:%M") for x in range(len(tarr)) ]
+tarr_cr = [ datetime.datetime.strptime((tarr[x])[0:16], "%Y.%m.%d_%H:%M") 
+           for x in range(len(tarr)) ]
 tmin, tmax = mdates.date2num([tarr_cr[0], tarr_cr[-1]])
 
 # Plot the resulting diagram
 f, (ax1) = plt.subplots(1, figsize=[12,6])
-im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], aspect='auto', cmap='Greys_r')
+im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], 
+                aspect='auto', cmap='Greys_r')
 ax1.set_yticks([-1,-0.5,0,0.5,1])
 ax1a = ax1.twinx()
 ax1b = ax1.twiny()
@@ -78,14 +81,16 @@ ax1.set_xlabel('Year')
 ax1.set_ylabel('Sine latitude')
 ax1a.set_ylabel('Latitude (degrees)')
 ax1b.set_xlabel('Carrington rotation')
-cb = plt.colorbar(im, ax=ax1a, label='Mean magnetic flux density (G)', use_gridspec=True, fraction=0.05, pad=0.1, extend='both')
+cb = plt.colorbar(im, ax=ax1a, label='Mean magnetic flux density (G)', 
+                  use_gridspec=True, fraction=0.05, pad=0.1, extend='both')
 #f.tight_layout()
 plt.savefig('bfly.pdf', dpi=300)
 plt.savefig('bfly.png', dpi=300)
 
 # Plot the resulting diagram vertically
 f, (ax1) = plt.subplots(1, figsize=[5,7])
-im = ax1.imshow(np.rot90(bfly), vmin=-10, vmax=10, extent=[-1,1,tmax,tmin], aspect='auto', cmap='Greys_r')
+im = ax1.imshow(np.rot90(bfly), vmin=-10, vmax=10, extent=[-1,1,tmax,tmin], 
+                aspect='auto', cmap='Greys_r')
 ax1.set_xticks([-1,-0.5,0,0.5,1])
 ax1a = ax1.twiny()
 ax1b = ax1.twinx()
@@ -99,7 +104,9 @@ ax1.set_ylabel('Year')
 ax1.set_xlabel('Sine latitude')
 ax1a.set_xlabel('Latitude (degrees)')
 ax1b.set_ylabel('Carrington rotation')
-cb = plt.colorbar(im, ax=ax1b, label='Mean magnetic flux density (G)', use_gridspec=True, fraction=0.1, pad=0.1, extend='both', location='bottom')
+cb = plt.colorbar(im, ax=ax1b, label='Mean magnetic flux density (G)', 
+                  use_gridspec=True, fraction=0.1, pad=0.1, extend='both', 
+                  location='bottom')
 f.tight_layout()
 plt.savefig('bfly_v.pdf', dpi=300)
 plt.savefig('bfly_v.png', dpi=300)
@@ -107,7 +114,8 @@ plt.savefig('bfly_v.png', dpi=300)
 # keynote_figs()
 
 f, (ax1) = plt.subplots(1, figsize=[12,6])
-im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], aspect='auto', cmap='Greys_r')
+im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], 
+                aspect='auto', cmap='Greys_r')
 ax1.set_yticks([-1,-0.5,0,0.5,1])
 ax1a = ax1.twinx()
 ax1b = ax1.twiny()
@@ -120,7 +128,8 @@ ax1.set_xlabel('Year')
 ax1.set_ylabel('Sine latitude')
 ax1a.set_ylabel('Latitude (degrees)')
 ax1b.set_xlabel('Carrington rotation')
-cb = plt.colorbar(im, ax=ax1a, label='Mean magnetic flux density (G)', use_gridspec=True, fraction=0.05, pad=0.1, extend='both')
+cb = plt.colorbar(im, ax=ax1a, label='Mean magnetic flux density (G)', 
+                  use_gridspec=True, fraction=0.05, pad=0.1, extend='both')
 #f.tight_layout()
 plt.savefig('d_bfly.pdf', dpi=300)
 plt.savefig('d_bfly.png', dpi=300)

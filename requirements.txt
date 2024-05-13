@@ -1,0 +1,10 @@
+ipykernel
+matplotlib
+numpy
+sunpy
+pandas
+drms
+requests
+bs4
+lxml
+zeep

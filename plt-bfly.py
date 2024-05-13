@@ -13,7 +13,7 @@ import datetime
 
 # Specify data directories and data range
 cr0 = 1911
-cr1 = 2266
+cr1 = 2269
 mdidat = os.path.expanduser('~/data/mdi.Synoptic_Mr.polfil/')
 mdicrs = np.arange(cr0, 2096)
 hmidat = os.path.expanduser('~/data/hmi.Synoptic_Mr.polfil/')
@@ -113,7 +113,7 @@ plt.savefig('bfly_v.png', dpi=300)
 
 # keynote_figs()
 
-f, (ax1) = plt.subplots(1, figsize=[12,6])
+f, (ax1) = plt.subplots(1, figsize=[6,3.5])
 im = ax1.imshow(bfly, vmin=-10, vmax=10, extent=[tmin,tmax,-1,1], 
                 aspect='auto', cmap='Greys_r')
 ax1.set_yticks([-1,-0.5,0,0.5,1])
@@ -129,7 +129,7 @@ ax1.set_ylabel('Sine latitude')
 ax1a.set_ylabel('Latitude (degrees)')
 ax1b.set_xlabel('Carrington rotation')
 cb = plt.colorbar(im, ax=ax1a, label='Mean magnetic flux density (G)', 
-                  use_gridspec=True, fraction=0.05, pad=0.1, extend='both')
+                  use_gridspec=True, fraction=0.1, pad=0.15, extend='both')
 #f.tight_layout()
-plt.savefig('d_bfly.pdf', dpi=300)
-plt.savefig('d_bfly.png', dpi=300)
+plt.savefig('bfly_small.pdf', dpi=300)
+plt.savefig('bfly_small.png', dpi=300)
